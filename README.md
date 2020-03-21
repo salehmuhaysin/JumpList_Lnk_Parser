@@ -37,7 +37,7 @@ Optional Arguments:
 To avoid printing the error messages and logo use "-q", also make sure to add either file "-f" or directory "-d"
 
 
-# Output
+### Output
 The output will be stored by default as json format, you can specify the output format by "-of \[csv|json\]", the fields are unified for both JumpList and Lnk files, so it will be in one output file, the field "Artifact" specify whether it is Lnk_File or JumpList
 
 # Helpful References: 
