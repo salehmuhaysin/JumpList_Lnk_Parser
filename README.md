@@ -69,6 +69,7 @@ AppType
 AppDesc
 Source_Name
 Source_Path
+Artifact
 ```
 
 # Helpful References: 
