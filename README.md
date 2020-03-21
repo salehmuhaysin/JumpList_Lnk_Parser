@@ -3,9 +3,9 @@ Parser for both JumpList and Lnk files artifacts
 
 
 # Description
-## JumpList: 
+### JumpList: 
 The jump list store the recently opened files by application in taskbar
-## Lnk Files:
+### Lnk Files:
 An LNK file is a shortcut or "link" used by Windows as a reference to an original file, folder, or application.
 
 # Analysis
