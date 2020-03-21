@@ -40,6 +40,37 @@ To avoid printing the error messages and logo use "-q", also make sure to add ei
 ### Output
 The output will be stored by default as json format, you can specify the output format by "-of \[csv|json\]", the fields are unified for both JumpList and Lnk files, so it will be in one output file, the field "Artifact" specify whether it is Lnk_File or JumpList
 
+#### Output Fields 
+```
+LNK_Class_ID
+Data_Flags
+File_Attrbutes
+Time_Creation
+Time_Access
+Time_Modification
+FileSize
+IconIndex
+ShowWindow
+Header_Size
+Location_Flags
+Drive_Type
+Drive_SN
+Volume_Label
+Local_Path
+Network_Share_Flags
+Network_Share_Name
+Network_Device_Name
+Network_Providers
+Network_Share_Name_uni
+Common_Path
+entry_number
+AppID
+AppType
+AppDesc
+Source_Name
+Source_Path
+```
+
 # Helpful References: 
 https://cyberforensicator.com/wp-content/uploads/2017/01/1-s2.0-S1742287616300202-main.2-14.pdf
 https://github.com/libyal/liblnk/blob/master/documentation/Windows%20Shortcut%20File%20(LNK)%20format.asciidoc
