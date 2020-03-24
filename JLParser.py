@@ -42,7 +42,7 @@ class JL:
 
 
 	quiet = True # If true then show the print details, if false only show the result in screen
-
+	pretty 	= False
 
 	def __init__(self , args , appid_path):
 		if not args.quiet:
@@ -61,7 +61,9 @@ class JL:
 		self.output_format 	= args.output_format if args.output_format is not None and args.output_format in ['json' , 'csv'] else 'json'
 		self.delimiter		= args.delimiter if args.delimiter is not None else ','
 		self.output_file 	= args.output_file if args.output_file is not None else None
-		self.pretty 		= True if args.pretty is not None else False
+		if args.pretty:
+			self.pretty = True
+			
 		# set the AppIDs 
 		appid_path = appid_path if args.appids_file is None else args.appids_file
 		if os.path.exists(appid_path):
