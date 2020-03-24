@@ -1,4 +1,4 @@
-import olefile
+
 import json
 import struct
 import uuid
@@ -6,6 +6,8 @@ import datetime
 import os
 import re
 import argparse
+import olefile
+
 
 """
 references: 
@@ -35,13 +37,13 @@ logo ="""
 ======================================================
 """
 
-appid_path = 'JLParser_AppID.csv'
+appid_path = os.path.dirname(os.path.abspath(__file__)) + '/JLParser_AppID.csv'
 
 
 class JL:
 
 
-	quiet = True # If true then show the print details, if false only show the result in screen
+	quiet 	= True # If true then show the print details, if false only show the result in screen
 	pretty 	= False
 
 	def __init__(self , args , appid_path):
@@ -52,10 +54,10 @@ class JL:
 
 		if args.input_file is None and args.input_dir is None:
 			self.print_msg("[-] Error: You need to provide either file or directory (-f or -d)")
-			return 0
+			return None
 		elif args.input_file is not None and args.input_dir is not None:
 			self.print_msg("[-] Error: You need to provide either file or directory (-f or -d) not both")
-			return 0
+			return None
 
 
 		self.output_format 	= args.output_format if args.output_format is not None and args.output_format in ['json' , 'csv'] else 'json'
@@ -63,17 +65,20 @@ class JL:
 		self.output_file 	= args.output_file if args.output_file is not None else None
 		if args.pretty:
 			self.pretty = True
-			
+		
 		# set the AppIDs 
 		appid_path = appid_path if args.appids_file is None else args.appids_file
+		appid_path = os.path.abspath(appid_path)
 		if os.path.exists(appid_path):
+			
 			AppIDs = self.read_AppId(appid_path)
 		else:
 			self.print_msg("[-] Error: File " + appid_path + " not found")
-			return 0
-
+			return None
+		
 		# get the list of files to be parsed
 		files = []
+
 		if args.input_file is not None:
 			files = [args.input_file]
 		else:
@@ -84,7 +89,7 @@ class JL:
 						files.append(file)
 			else:
 				self.print_msg("[-] Error: Path " + str(args.input_dir) + " is not directory or not found")
-				return 0	
+				return None	
 
 		output = []
 		for file in files:
@@ -93,7 +98,7 @@ class JL:
 				output += self.automaticDest(file , AppIDs) # parse JumpList
 			else:
 				self.print_msg("[-] Error: Path " + str(file) + " is not file or not found")
-				return 0
+				return None
 
 		# handle all the output results
 		self.handle_output(output)
